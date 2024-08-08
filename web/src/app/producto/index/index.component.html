@@ -1,0 +1,80 @@
+<div>
+  <div *ngIf="!mostrarNuevoRegistro">
+    <div>
+      <h3>Listado de productos</h3>
+    </div>
+    <div>
+      <button (click)="irNuevoRegistro()">Nuevo</button>
+    </div>
+    <div>
+      <div>
+        <h3>Filtros de búsqueda</h3>
+      </div>
+      <div>
+        <label>Código</label>
+        <div>
+          <input type="text" [(ngModel)]="id" />
+        </div>
+      </div>
+      <div>
+        <label>Nombre</label>
+        <div>
+          <input type="text" [(ngModel)]="nombre" />
+        </div>
+      </div>
+      <div>
+        <label>&nbsp;</label>
+        <div>
+          <button (click)="buscar()">Buscar</button>
+        </div>
+      </div>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="lista.length > 0">
+            <tr *ngFor="let item of lista">
+              <td>{{ item.id }}</td>
+              <td>{{ item.nombre }}</td>
+              <td>{{ item.precio }}</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="lista.length == 0">
+            <tr>
+              <td colspan="3">No existe información</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="mostrarNuevoRegistro">
+    <div>
+      <h3>Nuevo registro</h3>
+    </div>
+    <div>
+      <label>Nombre</label>
+      <div>
+        <input type="text" [(ngModel)]="registro.nombre" />
+      </div>
+    </div>
+    <div>
+      <label>Precio</label>
+      <div>
+        <input type="text" [(ngModel)]="registro.precio" />
+      </div>
+    </div>
+    <div>
+      <label>&nbsp;</label>
+      <div>
+        <button (click)="regresar()">Cancelar</button>
+        <button (click)="guardar()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
